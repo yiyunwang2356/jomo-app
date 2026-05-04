@@ -138,4 +138,15 @@ document.addEventListener("click", (event) => {
   if (option) {
     option.classList.toggle("active");
   }
+
+  const adminTab = event.target.closest("[data-admin-tab]");
+  if (adminTab) {
+    const panelId = adminTab.dataset.adminTab;
+    document.querySelectorAll("[data-admin-tab]").forEach((button) => {
+      button.classList.toggle("active", button.dataset.adminTab === panelId);
+    });
+    document.querySelectorAll(".admin-panel").forEach((panel) => {
+      panel.classList.toggle("active", panel.id === panelId);
+    });
+  }
 });
