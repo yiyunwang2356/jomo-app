@@ -326,6 +326,32 @@
                 <span>官方連結</span>
                 <input type="url" value="https://instagram.com/store" />
               </label>
+              <div class="upload-section">
+                <div class="upload-heading">
+                  <div>
+                    <span>圖片素材</span>
+                    <h2>上傳店家照片</h2>
+                  </div>
+                  <button type="button">從官網抓預覽圖</button>
+                </div>
+                <div class="upload-grid">
+                  <label class="upload-card cover">
+                    <input type="file" accept="image/*" />
+                    <strong>封面照</strong>
+                    <span>必填</span>
+                  </label>
+                  <label class="upload-card">
+                    <input type="file" accept="image/*" multiple />
+                    <strong>空間照片</strong>
+                    <span>至少 3 張</span>
+                  </label>
+                  <label class="upload-card">
+                    <input type="file" accept="image/*" multiple />
+                    <strong>活動案例</strong>
+                    <span>選填</span>
+                  </label>
+                </div>
+              </div>
               <label>
                 <span>適合活動</span>
                 <input type="text" value="生咖、攝影展、交換集市" />
@@ -374,15 +400,32 @@
                   </div>
                   <strong>待審核</strong>
                 </div>
-                <ul class="review-list">
-                  <li><span>官方連結</span><strong>已填寫</strong></li>
-                  <li><span>照片</span><strong>待補 3 張</strong></li>
-                  <li><span>適合活動</span><strong>生咖、攝影展</strong></li>
-                  <li><span>審核備註</span><strong>確認可貼牆規範</strong></li>
-                </ul>
-                <div class="review-actions">
-                  <button type="button">要求補件</button>
-                  <button type="button" class="approve">通過上架</button>
+              <ul class="review-list">
+                <li><span>官方連結</span><strong>已填寫</strong></li>
+                <li><span>照片</span><strong>待補 3 張</strong></li>
+                <li><span>適合活動</span><strong>生咖、攝影展</strong></li>
+                <li><span>審核備註</span><strong>確認可貼牆規範</strong></li>
+              </ul>
+              <div class="image-review">
+                <article class="image-tile pending">
+                  <div class="tile-preview haus-photo"></div>
+                  <span>封面照</span>
+                  <strong>待審</strong>
+                </article>
+                <article class="image-tile needs">
+                  <div class="tile-preview erooms-photo"></div>
+                  <span>空間照</span>
+                  <strong>需補件</strong>
+                </article>
+                <article class="image-tile approved">
+                  <div class="tile-preview platbum-photo"></div>
+                  <span>案例照</span>
+                  <strong>通過</strong>
+                </article>
+              </div>
+              <div class="review-actions">
+                <button type="button">要求補件</button>
+                <button type="button" class="approve">通過上架</button>
                 </div>
               </article>
               <article class="review-card">
@@ -395,14 +438,31 @@
                   <strong>待審核</strong>
                 </div>
                 <ul class="review-list">
-                  <li><span>官方連結</span><strong>已填寫</strong></li>
-                  <li><span>照片</span><strong>已上傳</strong></li>
-                  <li><span>變更內容</span><strong>新增低消規則</strong></li>
-                  <li><span>審核備註</span><strong>價格資訊需更清楚</strong></li>
-                </ul>
-                <div class="review-actions">
-                  <button type="button">退回修改</button>
-                  <button type="button" class="approve">核准更新</button>
+                <li><span>官方連結</span><strong>已填寫</strong></li>
+                <li><span>照片</span><strong>已上傳</strong></li>
+                <li><span>變更內容</span><strong>新增低消規則</strong></li>
+                <li><span>審核備註</span><strong>價格資訊需更清楚</strong></li>
+              </ul>
+              <div class="image-review">
+                <article class="image-tile approved">
+                  <div class="tile-preview idol-photo"></div>
+                  <span>封面照</span>
+                  <strong>通過</strong>
+                </article>
+                <article class="image-tile approved">
+                  <div class="tile-preview haus-photo"></div>
+                  <span>空間照</span>
+                  <strong>通過</strong>
+                </article>
+                <article class="image-tile pending">
+                  <div class="tile-preview kmon-photo"></div>
+                  <span>新案例</span>
+                  <strong>待審</strong>
+                </article>
+              </div>
+              <div class="review-actions">
+                <button type="button">退回修改</button>
+                <button type="button" class="approve">核准更新</button>
                 </div>
               </article>
             </div>
@@ -473,6 +533,36 @@
                   <span>官方連結</span>
                   <input value="https://nomaddhaus.com/" />
                 </label>
+                <div class="upload-section admin-upload">
+                  <div class="upload-heading">
+                    <div>
+                      <span>圖片管理</span>
+                      <h2>封面與空間照片</h2>
+                    </div>
+                    <button type="button">從官網抓預覽圖</button>
+                  </div>
+                  <div class="image-review large">
+                    <article class="image-tile approved">
+                      <div class="tile-preview haus-photo"></div>
+                      <span>封面照</span>
+                      <strong>公開中</strong>
+                    </article>
+                    <article class="image-tile approved">
+                      <div class="tile-preview spaceco-photo"></div>
+                      <span>空間照 1</span>
+                      <strong>公開中</strong>
+                    </article>
+                    <article class="image-tile pending upload-new">
+                      <div class="tile-preview add-photo">+</div>
+                      <span>新增照片</span>
+                      <strong>上傳</strong>
+                    </article>
+                  </div>
+                  <div class="review-actions">
+                    <button type="button">更換封面</button>
+                    <button type="button" class="approve">全部通過</button>
+                  </div>
+                </div>
                 <label>
                   <span>標籤</span>
                   <input value="攝影展、交換集市、視訊簽售、高質感背景" />
