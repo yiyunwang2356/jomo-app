@@ -669,9 +669,10 @@ textarea {
 .venue-info button {
   align-self: flex-start;
   padding: 9px 13px;
-  background: var(--aurora);
+  background: linear-gradient(135deg, #4c2f9f 0%, #6d43d9 55%, #8b5cf6 100%);
   color: #fff;
   font-size: 12px;
+  box-shadow: 0 10px 22px rgba(76, 47, 159, 0.22);
 }
 
 .detail-photo {
@@ -827,6 +828,136 @@ textarea {
 .success-card.quiet span {
   background: rgba(139, 92, 246, 0.1);
   color: var(--violet);
+}
+
+.auth-screen.active {
+  display: grid;
+  align-content: center;
+  gap: 14px;
+}
+
+.auth-card,
+.role-note,
+.session-card {
+  border: 1px solid rgba(139, 92, 246, 0.12);
+  border-radius: 28px;
+  background:
+    linear-gradient(90deg, rgba(139, 92, 246, 0.035) 1px, transparent 1px),
+    rgba(255, 255, 255, 0.92);
+  background-size: 14px 14px, auto;
+  box-shadow: 0 18px 46px rgba(72, 61, 103, 0.1);
+}
+
+.auth-card {
+  display: grid;
+  gap: 16px;
+  padding: 24px;
+}
+
+.auth-card span:first-child {
+  color: #aaa1bd;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+}
+
+.auth-card h1 {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.1;
+}
+
+.auth-card p,
+.role-note p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.65;
+}
+
+.admin-auth {
+  background:
+    radial-gradient(circle at 84% 16%, rgba(139, 92, 246, 0.16), transparent 28%),
+    linear-gradient(90deg, rgba(139, 92, 246, 0.035) 1px, transparent 1px),
+    rgba(255, 255, 255, 0.94);
+  background-size: auto, 14px 14px, auto;
+}
+
+.google-button {
+  display: flex;
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #4c2f9f 0%, #6d43d9 55%, #8b5cf6 100%);
+  color: #fff;
+  font-weight: 900;
+  box-shadow: 0 16px 32px rgba(76, 47, 159, 0.2);
+}
+
+.google-button span {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--violet);
+  font-size: 15px;
+  letter-spacing: 0;
+}
+
+.role-note {
+  padding: 16px;
+}
+
+.role-note strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--ink);
+}
+
+.session-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 10px 0 14px;
+  padding: 12px;
+  border-radius: 22px;
+}
+
+.session-avatar {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 14px;
+  background: var(--gradient);
+  color: #fff;
+  font-family: "Courier New", monospace;
+  font-weight: 900;
+}
+
+.session-card span {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.session-card strong {
+  display: block;
+  margin-top: 2px;
+  color: var(--ink);
+  font-size: 13px;
+}
+
+.admin-session .session-avatar {
+  background: linear-gradient(135deg, #211832 0%, #4c2f9f 100%);
 }
 
 .success-card span {

@@ -67,7 +67,7 @@
                 <h2>讓店家自己申請上架</h2>
                 <p>商家填寫空間資訊、照片、適用活動與官方連結，你審核後才公開。</p>
               </div>
-              <button type="button" data-nav="host">加入房源</button>
+              <button type="button" data-nav="authMerchant">加入房源</button>
             </div>
 
             <div class="section-heading">
@@ -304,10 +304,87 @@
             </div>
           </section>
 
+          <section class="screen auth-screen" id="authMerchant" aria-labelledby="auth-merchant-title">
+            <div class="auth-card">
+              <span>MERCHANT LOGIN</span>
+              <h1 id="auth-merchant-title">用 Google 登入，管理你的店家資料</h1>
+              <p>商家登入後可以新增房源、上傳圖片、查看審核狀態與修改店家資訊。</p>
+              <button class="google-button" type="button" data-nav="merchantDashboard">
+                <span>G</span>
+                Continue with Google
+              </button>
+            </div>
+            <div class="role-note">
+              <strong>商家權限</strong>
+              <p>只能編輯自己送出的店家資料，送出後需經平台審核才會公開。</p>
+            </div>
+          </section>
+
+          <section class="screen auth-screen" id="authAdmin" aria-labelledby="auth-admin-title">
+            <div class="auth-card admin-auth">
+              <span>ADMIN LOGIN</span>
+              <h1 id="auth-admin-title">管理員登入後才能審核與編輯資料</h1>
+              <p>系統會檢查 Google 帳號是否具備 admin 權限，通過後才開放後台。</p>
+              <button class="google-button" type="button" data-nav="admin">
+                <span>G</span>
+                Continue with Google
+              </button>
+            </div>
+            <div class="role-note">
+              <strong>管理員權限</strong>
+              <p>可以審核所有店家、修改公開狀態、編輯資料、要求補件或隱藏房源。</p>
+            </div>
+          </section>
+
+          <section class="screen" id="merchantDashboard" aria-labelledby="merchant-dashboard-title">
+            <div class="page-title compact">
+              <p>Merchant dashboard</p>
+              <h1 id="merchant-dashboard-title">商家後台</h1>
+            </div>
+            <div class="session-card">
+              <div class="session-avatar">G</div>
+              <div>
+                <span>Google 帳號已登入</span>
+                <strong>store.owner@gmail.com</strong>
+              </div>
+            </div>
+            <div class="admin-stat-grid">
+              <article><strong>1</strong><span>待審核</span></article>
+              <article><strong>0</strong><span>已公開</span></article>
+              <article><strong>2</strong><span>需補件</span></article>
+            </div>
+            <article class="review-card">
+              <div class="review-top">
+                <div>
+                  <span>你的房源</span>
+                  <h2>New Fan Space</h2>
+                  <p>台北・中山區｜展覽與快閃複合空間</p>
+                </div>
+                <strong>待審核</strong>
+              </div>
+              <ul class="review-list">
+                <li><span>資料狀態</span><strong>已送出</strong></li>
+                <li><span>圖片狀態</span><strong>需補 3 張</strong></li>
+                <li><span>平台備註</span><strong>請補可佈置範圍</strong></li>
+              </ul>
+              <div class="review-actions">
+                <button type="button" data-nav="host">編輯資料</button>
+                <button type="button" class="approve" data-nav="host">新增房源</button>
+              </div>
+            </article>
+          </section>
+
           <section class="screen" id="host" aria-labelledby="host-title">
             <div class="page-title compact">
               <p>Become a host</p>
               <h1 id="host-title">商家申請上架</h1>
+            </div>
+            <div class="session-card">
+              <div class="session-avatar">G</div>
+              <div>
+                <span>商家登入中</span>
+                <strong>store.owner@gmail.com</strong>
+              </div>
             </div>
             <div class="host-steps" aria-label="上架流程">
               <span class="active">1 填資料</span>
@@ -381,13 +458,20 @@
               <p>資料會先進入平台後台，通過後才會出現在公開列表。</p>
               <strong>目前狀態：待審核</strong>
             </div>
-            <button class="secondary-button" type="button" data-nav="admin">查看後台審核</button>
+            <button class="secondary-button" type="button" data-nav="merchantDashboard">查看商家後台</button>
           </section>
 
           <section class="screen" id="admin" aria-labelledby="admin-title">
             <div class="page-title compact">
               <p>Admin review</p>
               <h1 id="admin-title">JOMO 管理後台</h1>
+            </div>
+            <div class="session-card admin-session">
+              <div class="session-avatar">A</div>
+              <div>
+                <span>管理員登入中</span>
+                <strong>admin@jomo.app</strong>
+              </div>
             </div>
             <div class="admin-tabs" aria-label="後台功能">
               <button type="button" class="active" data-admin-tab="reviewPanel">待審核</button>
@@ -609,8 +693,8 @@
               <label><span>Email</span><input value="dora@spotlight.com" /></label>
               <label><span>常辦活動</span><input value="生日應援、回歸展" /></label>
             </div>
-            <button class="secondary-button" type="button" data-nav="host">商家申請上架</button>
-            <button class="secondary-button" type="button" data-nav="admin">平台審核後台</button>
+            <button class="secondary-button" type="button" data-nav="authMerchant">商家 Google 登入</button>
+            <button class="secondary-button" type="button" data-nav="authAdmin">管理員 Google 登入</button>
           </section>
         </div>
 
