@@ -5,6 +5,8 @@
   --cyan: #e8fbff;
   --cream: #ffffff;
   --lavender: #f7f4ff;
+  --y2k-blue: #b7d8ff;
+  --y2k-lemon: #f1efff;
   --ink: #211832;
   --muted: #7b7391;
   --line: rgba(73, 56, 106, 0.12);
@@ -26,6 +28,7 @@ body {
     radial-gradient(circle at 10% 0%, rgba(185, 168, 255, 0.34), transparent 31%),
     radial-gradient(circle at 92% 4%, rgba(203, 226, 255, 0.6), transparent 32%),
     radial-gradient(circle at 88% 48%, rgba(237, 231, 255, 0.72), transparent 25%),
+    repeating-linear-gradient(90deg, rgba(139, 92, 246, 0.035) 0 1px, transparent 1px 18px),
     linear-gradient(135deg, #fbfaff 0%, #f3f0ff 44%, #f8fcff 100%);
 }
 
@@ -56,8 +59,31 @@ button {
   overflow: hidden;
   border: 10px solid #ffffff;
   border-radius: 34px;
-  background: var(--lavender);
+  background:
+    linear-gradient(90deg, rgba(139, 92, 246, 0.045) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(139, 92, 246, 0.035) 1px, transparent 1px),
+    var(--lavender);
+  background-size: 18px 18px, 18px 18px, auto;
   box-shadow: 0 30px 90px rgba(62, 48, 93, 0.16);
+}
+
+.phone::before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  z-index: 1;
+  pointer-events: none;
+  border: 1px solid rgba(139, 92, 246, 0.12);
+  border-radius: 24px;
+  mask:
+    linear-gradient(#000 0 0) top left / 42px 1px no-repeat,
+    linear-gradient(#000 0 0) top left / 1px 42px no-repeat,
+    linear-gradient(#000 0 0) top right / 42px 1px no-repeat,
+    linear-gradient(#000 0 0) top right / 1px 42px no-repeat,
+    linear-gradient(#000 0 0) bottom left / 42px 1px no-repeat,
+    linear-gradient(#000 0 0) bottom left / 1px 42px no-repeat,
+    linear-gradient(#000 0 0) bottom right / 42px 1px no-repeat,
+    linear-gradient(#000 0 0) bottom right / 1px 42px no-repeat;
 }
 
 .topbar {
@@ -67,7 +93,10 @@ button {
   align-items: center;
   gap: 10px;
   padding: 14px 16px 10px;
-  background: rgba(255, 255, 255, 0.88);
+  background:
+    linear-gradient(90deg, rgba(139, 92, 246, 0.08) 1px, transparent 1px),
+    rgba(255, 255, 255, 0.88);
+  background-size: 12px 12px, auto;
   backdrop-filter: blur(16px);
 }
 
@@ -79,6 +108,7 @@ button {
   display: block;
   font-size: 13px;
   letter-spacing: 0;
+  text-shadow: 2px 0 0 rgba(183, 216, 255, 0.8);
 }
 
 .topbar span {
@@ -140,6 +170,7 @@ svg {
 }
 
 .hero {
+  position: relative;
   display: flex;
   min-height: 260px;
   flex-direction: column;
@@ -148,11 +179,56 @@ svg {
   padding: 24px;
   border-radius: 28px;
   background:
+    linear-gradient(90deg, rgba(139, 92, 246, 0.06) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(139, 92, 246, 0.05) 1px, transparent 1px),
     radial-gradient(circle at 88% 20%, rgba(139, 92, 246, 0.15), transparent 31%),
     radial-gradient(circle at 18% 12%, rgba(199, 220, 255, 0.45), transparent 30%),
     #fff;
+  background-size: 16px 16px, 16px 16px, auto, auto, auto;
   color: var(--ink);
   box-shadow: var(--glow);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  width: 74px;
+  height: 74px;
+  opacity: 0.5;
+  background:
+    linear-gradient(90deg, var(--violet) 8px, transparent 8px) 0 0 / 16px 16px,
+    linear-gradient(var(--violet) 8px, transparent 8px) 0 0 / 16px 16px;
+  clip-path: polygon(0 18%, 18% 18%, 18% 0, 82% 0, 82% 18%, 100% 18%, 100% 82%, 82% 82%, 82% 100%, 18% 100%, 18% 82%, 0 82%);
+}
+
+.y2k-mini-labels {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  color: #8c83a5;
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.pixel-word {
+  position: absolute;
+  top: 60px;
+  right: 18px;
+  z-index: 0;
+  color: rgba(139, 92, 246, 0.12);
+  font-family: "Courier New", monospace;
+  font-size: 54px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-shadow:
+    4px 0 0 rgba(183, 216, 255, 0.22),
+    0 4px 0 rgba(139, 92, 246, 0.12);
+  image-rendering: pixelated;
 }
 
 .hero-copy p,
@@ -167,6 +243,8 @@ svg {
 }
 
 .hero-copy p {
+  position: relative;
+  z-index: 1;
   color: #aaa1bd;
 }
 
@@ -177,13 +255,21 @@ p {
 }
 
 .hero h1 {
+  position: relative;
+  z-index: 1;
   max-width: 296px;
   margin-bottom: 0;
-  font-size: 36px;
-  line-height: 1.04;
+  font-family: "Courier New", monospace;
+  font-size: 32px;
+  line-height: 1.02;
+  text-shadow:
+    2px 0 0 rgba(183, 216, 255, 0.75),
+    0 2px 0 rgba(239, 231, 255, 0.95);
 }
 
 .hero-copy span {
+  position: relative;
+  z-index: 1;
   display: block;
   max-width: 278px;
   margin-top: 18px;
@@ -208,6 +294,7 @@ p {
   background: var(--gradient);
   color: #fff;
   box-shadow: 0 16px 32px rgba(139, 92, 246, 0.28);
+  clip-path: polygon(8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px), 0 8px);
 }
 
 .primary-button.wide,
@@ -337,6 +424,7 @@ textarea {
   padding: 9px 14px;
   font-size: 12px;
   font-weight: 800;
+  box-shadow: inset 0 -2px 0 rgba(139, 92, 246, 0.08);
 }
 
 .chip.active,
@@ -351,6 +439,27 @@ textarea {
   align-items: center;
   justify-content: space-between;
   margin-top: 18px;
+}
+
+.y2k-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  margin-top: 12px;
+  font-family: "Courier New", monospace;
+  font-size: 10px;
+  font-weight: 900;
+  color: var(--violet);
+}
+
+.y2k-strip span {
+  min-height: 24px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(139, 92, 246, 0.14);
+  background:
+    linear-gradient(45deg, rgba(139, 92, 246, 0.08) 25%, transparent 25% 50%, rgba(139, 92, 246, 0.08) 50% 75%, transparent 75%) 0 0 / 8px 8px,
+    rgba(255, 255, 255, 0.74);
 }
 
 .section-heading h2 {
@@ -518,6 +627,7 @@ textarea {
   border-radius: 24px;
   background: rgba(255, 255, 255, 0.84);
   box-shadow: 0 14px 38px rgba(72, 61, 103, 0.08);
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
 }
 
 .venue-photo {
@@ -952,6 +1062,10 @@ textarea {
   border-radius: 24px;
   background: rgba(255, 255, 255, 0.92);
   box-shadow: 0 14px 38px rgba(72, 61, 103, 0.08);
+  background:
+    linear-gradient(90deg, rgba(139, 92, 246, 0.035) 1px, transparent 1px),
+    rgba(255, 255, 255, 0.92);
+  background-size: 14px 14px, auto;
 }
 
 .review-top {
@@ -1327,6 +1441,7 @@ textarea {
 .tab.active {
   background: rgba(139, 92, 246, 0.1);
   color: var(--violet);
+  box-shadow: inset 0 -2px 0 rgba(139, 92, 246, 0.2);
 }
 
 @media (max-width: 480px) {
