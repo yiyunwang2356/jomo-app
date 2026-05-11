@@ -309,10 +309,11 @@
               <span>MERCHANT LOGIN</span>
               <h1 id="auth-merchant-title">用 Google 登入，管理你的店家資料</h1>
               <p>商家登入後可以新增房源、上傳圖片、查看審核狀態與修改店家資訊。</p>
-              <button class="google-button" type="button" data-nav="merchantDashboard">
+              <button class="google-button" type="button" data-nav="merchantDashboard" data-google-login="merchant">
                 <span>G</span>
                 Continue with Google
               </button>
+              <small data-firebase-status>Firebase 尚未設定，現在使用 prototype 模式。</small>
             </div>
             <div class="role-note">
               <strong>商家權限</strong>
@@ -325,10 +326,11 @@
               <span>ADMIN LOGIN</span>
               <h1 id="auth-admin-title">管理員登入後才能審核與編輯資料</h1>
               <p>系統會檢查 Google 帳號是否具備 admin 權限，通過後才開放後台。</p>
-              <button class="google-button" type="button" data-nav="admin">
+              <button class="google-button" type="button" data-nav="admin" data-google-login="admin">
                 <span>G</span>
                 Continue with Google
               </button>
+              <small data-firebase-status>Firebase 尚未設定，現在使用 prototype 模式。</small>
             </div>
             <div class="role-note">
               <strong>管理員權限</strong>
@@ -344,8 +346,8 @@
             <div class="session-card">
               <div class="session-avatar">G</div>
               <div>
-                <span>Google 帳號已登入</span>
-                <strong>store.owner@gmail.com</strong>
+                <span data-session-role>Google 帳號已登入</span>
+                <strong data-session-email>store.owner@gmail.com</strong>
               </div>
             </div>
             <div class="admin-stat-grid">
@@ -382,8 +384,8 @@
             <div class="session-card">
               <div class="session-avatar">G</div>
               <div>
-                <span>商家登入中</span>
-                <strong>store.owner@gmail.com</strong>
+                <span data-session-role>商家登入中</span>
+                <strong data-session-email>store.owner@gmail.com</strong>
               </div>
             </div>
             <div class="host-steps" aria-label="上架流程">
@@ -394,11 +396,11 @@
             <form class="booking-card">
               <label>
                 <span>店家名稱</span>
-                <input type="text" value="New Fan Space" />
+                <input type="text" name="name" value="New Fan Space" />
               </label>
               <label>
                 <span>店家類型</span>
-                <select>
+                <select name="type">
                   <option>展覽與快閃複合空間</option>
                   <option>視訊簽售獨立空間</option>
                   <option>應援咖啡廳</option>
@@ -407,11 +409,11 @@
               </label>
               <label>
                 <span>地點</span>
-                <input type="text" value="台北・中山區" />
+                <input type="text" name="location" value="台北・中山區" />
               </label>
               <label>
                 <span>官方連結</span>
-                <input type="url" value="https://instagram.com/store" />
+                <input type="url" name="officialUrl" value="https://instagram.com/store" />
               </label>
               <div class="upload-section">
                 <div class="upload-heading">
@@ -423,17 +425,17 @@
                 </div>
                 <div class="upload-grid">
                   <label class="upload-card cover">
-                    <input type="file" accept="image/*" />
+                    <input type="file" name="coverImage" accept="image/*" />
                     <strong>封面照</strong>
                     <span>必填</span>
                   </label>
                   <label class="upload-card">
-                    <input type="file" accept="image/*" multiple />
+                    <input type="file" name="spaceImages" accept="image/*" multiple />
                     <strong>空間照片</strong>
                     <span>至少 3 張</span>
                   </label>
                   <label class="upload-card">
-                    <input type="file" accept="image/*" multiple />
+                    <input type="file" name="caseImages" accept="image/*" multiple />
                     <strong>活動案例</strong>
                     <span>選填</span>
                   </label>
@@ -441,11 +443,11 @@
               </div>
               <label>
                 <span>適合活動</span>
-                <input type="text" value="生咖、攝影展、交換集市" />
+                <input type="text" name="tags" value="生咖、攝影展、交換集市" />
               </label>
               <label>
                 <span>店家簡介</span>
-                <textarea>請描述空間特色、可佈置範圍、是否可貼牆、是否有低消或預約規則。</textarea>
+                <textarea name="description">請描述空間特色、可佈置範圍、是否可貼牆、是否有低消或預約規則。</textarea>
               </label>
             </form>
             <button class="primary-button wide" type="button" data-nav="hostSubmitted">送出審核</button>
@@ -469,8 +471,8 @@
             <div class="session-card admin-session">
               <div class="session-avatar">A</div>
               <div>
-                <span>管理員登入中</span>
-                <strong>admin@jomo.app</strong>
+                <span data-session-role>管理員登入中</span>
+                <strong data-session-email>admin@jomo.app</strong>
               </div>
             </div>
             <div class="admin-tabs" aria-label="後台功能">
@@ -723,5 +725,6 @@
       </section>
     </main>
     <script src="script.js"></script>
+    <script type="module" src="firebase-app.js"></script>
   </body>
 </html>

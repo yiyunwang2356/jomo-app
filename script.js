@@ -110,6 +110,8 @@ function showScreen(id, push = true) {
   }
 }
 
+window.JOMOShowScreen = showScreen;
+
 document.addEventListener("click", (event) => {
   const navButton = event.target.closest("[data-nav]");
   if (navButton) {
