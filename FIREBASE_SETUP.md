@@ -4,7 +4,9 @@ JOMO can use Firebase's no-cost Spark plan for the first prototype:
 
 - Firebase Authentication: Google login
 - Cloud Firestore: users, venues, review status
-- Cloud Storage: listing images
+- Image URLs stored in Firestore
+
+This prototype does not require Firebase Storage, because Storage may require upgrading billing in newer Firebase projects. Store public image URLs in Firestore for the first free version.
 
 ## 1. Create Firebase Project
 
@@ -34,17 +36,17 @@ venues/{venueId}
 reviews/{reviewId}
 ```
 
-## 4. Enable Storage
+## 4. Image URL Fields
 
-1. Open Storage.
-2. Create a default bucket.
-3. Store listing images under:
+Do not enable Firebase Storage for the free MVP. Store image links in Firestore:
 
 ```text
-venues/{venueId}/cover
-venues/{venueId}/space
-venues/{venueId}/case
+coverImageUrl
+spaceImageUrls
+caseImageUrls
 ```
+
+The image URLs can come from store websites, public image hosting, GitHub-hosted assets, or another public CDN.
 
 ## 5. Add Web App Config
 
@@ -63,7 +65,7 @@ export const firebaseConfig = {
   apiKey: "...",
   authDomain: "jomo-app.firebaseapp.com",
   projectId: "jomo-app",
-  storageBucket: "jomo-app.appspot.com",
+  storageBucket: "",
   messagingSenderId: "...",
   appId: "...",
 };
@@ -103,22 +105,8 @@ service cloud.firestore {
 }
 ```
 
-Storage rules:
-
-```js
-rules_version = '2';
-service firebase.storage {
-  match /b/{bucket}/o {
-    match /venues/{venueId}/{allPaths=**} {
-      allow read: if true;
-      allow write: if request.auth != null;
-    }
-  }
-}
-```
-
 ## Notes
 
 Firebase config is not a password. It is safe to keep in frontend code, but Security Rules must protect the data.
 
-For the free Spark plan, keep the app small, avoid Cloud Functions, and monitor Firestore reads/writes and Storage usage.
+For the free Spark plan, keep the app small, avoid Cloud Functions and Firebase Storage, and monitor Firestore reads/writes.

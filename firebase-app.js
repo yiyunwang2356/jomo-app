@@ -15,19 +15,12 @@ import {
   serverTimestamp,
   setDoc,
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
-import {
-  getDownloadURL,
-  getStorage,
-  ref,
-  uploadBytes,
-} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-storage.js";
 import { firebaseConfig, firebaseEnabled } from "./firebase-config.js";
 
 const state = {
   app: null,
   auth: null,
   db: null,
-  storage: null,
   user: null,
   role: null,
 };
@@ -100,6 +93,9 @@ async function createVenueDraft(form) {
     type: formData.get("type") || "展覽與快閃複合空間",
     location: formData.get("location") || "",
     officialUrl: formData.get("officialUrl") || "",
+    coverImageUrl: formData.get("coverImageUrl") || "",
+    spaceImageUrls: [formData.get("spaceImageUrl")].filter(Boolean),
+    caseImageUrls: [formData.get("caseImageUrl")].filter(Boolean),
     tags: formData.get("tags") || "",
     description: formData.get("description") || "",
     status: "pending",
@@ -108,15 +104,6 @@ async function createVenueDraft(form) {
   });
 
   return venueRef.id;
-}
-
-async function uploadVenueImage(file, venueId, imageType) {
-  if (!firebaseEnabled || !state.user || !file) return null;
-
-  const cleanName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
-  const imageRef = ref(state.storage, `venues/${venueId}/${imageType}/${Date.now()}-${cleanName}`);
-  await uploadBytes(imageRef, file);
-  return getDownloadURL(imageRef);
 }
 
 function bindAuthButtons() {
@@ -166,7 +153,6 @@ function initFirebase() {
   state.app = initializeApp(firebaseConfig);
   state.auth = getAuth(state.app);
   state.db = getFirestore(state.app);
-  state.storage = getStorage(state.app);
 
   onAuthStateChanged(state.auth, (user) => {
     state.user = user;
@@ -179,7 +165,6 @@ function initFirebase() {
 
 window.JOMOFirebase = {
   createVenueDraft,
-  uploadVenueImage,
 };
 
 initFirebase();
