@@ -16,3 +16,19 @@ The app helps fans and organizers search for cafes, pop-up spaces, video call ro
 ## Current Build
 
 This is a static HTML/CSS/JavaScript prototype. Open `index.html` in a browser to view it.
+
+## Image Workflow
+
+For the free MVP, merchants can provide public image links or a Google Drive folder link. The platform admin reviews and downloads approved images, then places them under:
+
+```text
+assets/venues/nomadd-haus/
+```
+
+Nomadd Haus folders are organized by space type:
+
+- `cover`
+- `exhibition`
+- `video-call`
+- `screening`
+- `source-submissions`
