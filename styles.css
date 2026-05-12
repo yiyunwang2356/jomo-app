@@ -372,6 +372,39 @@ p {
   box-shadow: 0 14px 38px rgba(72, 61, 103, 0.08);
 }
 
+.discovery-panel {
+  gap: 10px;
+}
+
+.search-note {
+  border: 1px solid rgba(139, 92, 246, 0.12);
+  border-radius: 18px;
+  background:
+    linear-gradient(90deg, rgba(139, 92, 246, 0.045) 1px, transparent 1px),
+    rgba(247, 244, 255, 0.72);
+  background-size: 12px 12px, auto;
+  padding: 12px;
+}
+
+.search-note span {
+  color: #aaa1bd;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+}
+
+.search-note p {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.search-submit {
+  margin-top: 4px;
+}
+
 label span {
   display: block;
   margin-bottom: 6px;
@@ -522,6 +555,38 @@ textarea {
   padding: 11px 14px;
   font-size: 12px;
   font-weight: 900;
+}
+
+.account-actions {
+  display: grid;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.account-entry {
+  margin-top: 0;
+}
+
+.admin-entry {
+  border: 1px dashed rgba(139, 92, 246, 0.22);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.72);
+  padding: 14px;
+}
+
+.admin-entry summary {
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.admin-entry p {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.55;
 }
 
 .mini-card {

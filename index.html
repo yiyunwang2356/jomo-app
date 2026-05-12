@@ -38,19 +38,38 @@
               <button class="primary-button" type="button" data-nav="explore">探索店家</button>
             </div>
 
-            <form class="search-panel" role="search">
+            <form class="search-panel discovery-panel" role="search">
+              <div class="search-note">
+                <span>DISCOVERY SEARCH</span>
+                <p>JOMO 先幫你找適合的店家與官方連結；實際檔期、價格與預約仍回到商家確認。</p>
+              </div>
               <label>
-                <span>想做什麼</span>
-                <input type="search" value="生咖展覽、快閃展覽" aria-label="想做什麼" />
+                <span>活動需求</span>
+                <select aria-label="活動需求">
+                  <option>生咖展覽 / 杯套活動</option>
+                  <option>快閃展覽 / 攝影展</option>
+                  <option>視訊簽售 / 安靜包廂</option>
+                  <option>專輯 / 周邊購買</option>
+                </select>
               </label>
               <label>
-                <span>地點</span>
-                <input type="search" value="台北・中山" aria-label="活動地區" />
+                <span>想找的地區</span>
+                <select aria-label="想找的地區">
+                  <option>台北・中山 / 赤峰街</option>
+                  <option>台北・大安</option>
+                  <option>台北・西門</option>
+                  <option>不限地區</option>
+                </select>
               </label>
               <label>
-                <span>日期</span>
-                <input type="month" value="2026-06" aria-label="活動月份" />
+                <span>預計活動月份</span>
+                <select aria-label="預計活動月份">
+                  <option>近 1 個月內</option>
+                  <option>1-3 個月內</option>
+                  <option>尚未決定</option>
+                </select>
               </label>
+              <button class="primary-button wide search-submit" type="button" data-nav="explore">查看推薦店家</button>
             </form>
 
             <div class="chip-row" aria-label="熱門分類">
@@ -703,8 +722,21 @@
               <label><span>Email</span><input value="dora@spotlight.com" /></label>
               <label><span>常辦活動</span><input value="生日應援、回歸展" /></label>
             </div>
-            <button class="secondary-button" type="button" data-nav="authMerchant">商家 Google 登入</button>
-            <button class="secondary-button" type="button" data-nav="authAdmin">管理員 Google 登入</button>
+            <div class="account-actions">
+              <article class="host-entry account-entry">
+                <div>
+                  <span>FOR STORES</span>
+                  <h2>我是商家</h2>
+                  <p>申請上架、補件、查看審核狀態。商家不會看到管理員後台。</p>
+                </div>
+                <button type="button" data-nav="authMerchant">商家登入</button>
+              </article>
+              <details class="admin-entry">
+                <summary>平台管理員入口</summary>
+                <p>只有你指定的 Google 帳號 role = admin 才能進入；一般商家登入後不顯示此入口。</p>
+                <button class="secondary-button" type="button" data-nav="authAdmin">管理員登入</button>
+              </details>
+            </div>
           </section>
         </div>
 
